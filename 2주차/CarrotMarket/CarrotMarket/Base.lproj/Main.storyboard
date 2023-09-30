@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDn-xk-fhX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="AoJ-0x-mXY">
+            <objects>
+                <tabBarController id="dDn-xk-fhX" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rxH-4D-lYd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zIZ-X2-VJc" kind="relationship" relationship="viewControllers" id="BzJ-7h-zDp"/>
+                        <segue destination="oRJ-Zd-xAh" kind="relationship" relationship="viewControllers" id="9ZQ-cN-aUs"/>
+                        <segue destination="HaV-8g-seM" kind="relationship" relationship="viewControllers" id="Pjf-wz-CxG"/>
+                        <segue destination="Qhp-YI-7nt" kind="relationship" relationship="viewControllers" id="nBL-R2-uoO"/>
+                        <segue destination="TU3-XU-Guh" kind="relationship" relationship="viewControllers" id="EzZ-gv-xCX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxI-Ij-JTs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1183" y="-394"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="UITabBarController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSK-zU-OJG">
+                                <rect key="frame" x="0.0" y="772" width="393" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="uqL-04-sVw"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="홈" image="홈" selectedImage="검정홈" id="Zwa-lX-8lN">
+                                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="동네생활" image="동네생활" selectedImage="검정동네생활" id="S2s-nx-v5f"/>
+                                    <tabBarItem title="내 근처" image="내근처" selectedImage="검정내근처" id="QkU-It-ynn"/>
+                                    <tabBarItem title="채팅" image="채팅" selectedImage="검정내근처" id="dx7-Tx-boA"/>
+                                    <tabBarItem title="나의 당근" image="나의당근" selectedImage="검정나의당근" id="Qfw-CJ-QhZ"/>
+                                </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tabBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jSK-zU-OJG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="27N-oV-ruM"/>
+                            <constraint firstAttribute="bottom" secondItem="jSK-zU-OJG" secondAttribute="bottom" id="Tms-kz-UfX"/>
+                            <constraint firstItem="jSK-zU-OJG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wqi-AJ-OmV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabBar" destination="jSK-zU-OJG" id="6Gx-Be-dPz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="70"/>
+        </scene>
+        <!--홈-->
+        <scene sceneID="eVw-Tm-Tol">
+            <objects>
+                <viewController id="zIZ-X2-VJc" customClass="MainViewController" customModule="CarrotMarket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rzd-ph-scx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DDG-LZ-VqA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="홈" image="홈" selectedImage="검정홈" id="hKS-nO-M1E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IzV-C4-dFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2911" y="487"/>
+        </scene>
+        <!--동네생활-->
+        <scene sceneID="Th8-ll-hcn">
+            <objects>
+                <viewController id="oRJ-Zd-xAh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pgp-ft-d5P">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BD3-sD-GZS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="동네생활" image="동네생활" selectedImage="검정동네생활" id="wEB-i5-mIP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tPr-ke-NTk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1993" y="487"/>
+        </scene>
+        <!--나의 당근-->
+        <scene sceneID="3rm-oy-860">
+            <objects>
+                <viewController id="TU3-XU-Guh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AZQ-Sc-9Jj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6QD-x1-ppK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="나의 당근" image="나의당근" id="S9z-Cx-I3O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NbU-lh-lQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="487"/>
+        </scene>
+        <!--채팅-->
+        <scene sceneID="LiG-SB-QgM">
+            <objects>
+                <viewController id="Qhp-YI-7nt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mmb-0y-12r">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oVs-iB-xAT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="채팅" image="채팅" selectedImage="검정채팅" id="wvX-T0-Bag"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Chh-MY-OWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="487"/>
+        </scene>
+        <!--내 근처-->
+        <scene sceneID="YY4-gm-kBu">
+            <objects>
+                <viewController id="HaV-8g-seM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ecv-un-efu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="L4f-Za-1ZF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="내 근처" image="내근처" selectedImage="검정내근처" id="pr2-zL-Ihb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTo-K2-ret" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1184" y="487"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="검정나의당근" width="28" height="28"/>
+        <image name="검정내근처" width="28" height="28"/>
+        <image name="검정동네생활" width="28" height="28"/>
+        <image name="검정채팅" width="28" height="28"/>
+        <image name="검정홈" width="28" height="28"/>
+        <image name="나의당근" width="28" height="28"/>
+        <image name="내근처" width="28" height="28"/>
+        <image name="동네생활" width="28" height="28"/>
+        <image name="채팅" width="28" height="28"/>
+        <image name="홈" width="28" height="28"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
