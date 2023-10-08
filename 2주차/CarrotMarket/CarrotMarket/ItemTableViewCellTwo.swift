@@ -99,24 +99,6 @@ final class ItemTableViewCellTwo: UITableViewCell {
             goButton.heightAnchor.constraint(equalToConstant: 24)
         ])
         
-//        NSLayoutConstraint.activate([
-//            scrollView.widthAnchor.constraint(equalToConstant: contentView.width),
-//            scrollView.heightAnchor.constraint(equalToConstant: 140),
-//            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-//            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-//        ])
-        
-//        scrollView.contentSize = CGSize(width: contentView.width, height: contentView.height)
-        
-//        NSLayoutConstraint.activate([
-//            scrollContentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-//            scrollContentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-//            scrollContentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-//            scrollContentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
-//        ])
-        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
