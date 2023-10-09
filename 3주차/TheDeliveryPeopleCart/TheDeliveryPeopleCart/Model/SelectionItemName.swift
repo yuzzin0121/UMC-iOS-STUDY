@@ -15,4 +15,9 @@ struct SelectionItemName {
         else { return "선택" }
     }
     var selectionItems: [SelectionItem]!
+    init(selectionKind: String, isEssential: Bool, selectionItems: [SelectionItem]!) {
+        self.selectionKind = selectionKind
+        self.isEssential = isEssential
+        self.selectionItems = selectionItems
+    }
 }

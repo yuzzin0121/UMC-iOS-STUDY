@@ -1,8 +1,8 @@
 //
 //  SelectionItem.swift
-//  TheDeliveryPeopleCart
+//  AddToCart
 //
-//  Created by 조유진 on 2023/10/03.
+//  Created by 조유진 on 2023/10/09.
 //
 
 import UIKit
@@ -30,3 +30,4 @@ struct SelectionItem {
         self.priceValue = priceValue
     }
 }
+

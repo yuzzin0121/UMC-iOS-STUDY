@@ -1,14 +1,13 @@
 //
-//  ViewController.swift
-//  TheDeliveryPeopleCart
+//  SelectMenuViewController.swift
+//  AddToCart
 //
-//  Created by 조유진 on 2023/10/01.
+//  Created by 조유진 on 2023/10/03.
 //
 
 import UIKit
 
-class SelectFoodViewController: UIViewController {
- 
+class SelectMenuViewController: UIViewController {
     // 스크롤뷰
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -33,7 +32,6 @@ class SelectFoodViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
     
     // 음식 설명뷰 시작
     private let descriptionView: UIView = { // 도화지~
@@ -72,7 +70,7 @@ class SelectFoodViewController: UIViewController {
     private let menuDescriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = UIColor.secondaryLabel
         label.lineBreakMode = .byCharWrapping
         let labelText = "분모자떡볶이 선택 시, 떡이 분모자로 변경되어 제공됩니다."
@@ -134,7 +132,7 @@ class SelectFoodViewController: UIViewController {
     private let priceStackView: UIStackView = {
         let priceStackView = UIStackView()
         priceStackView.axis = .horizontal
-//        priceStackView.distribution = .equalCentering
+        priceStackView.distribution = .equalCentering
         priceStackView.alignment = .fill
         priceStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -142,19 +140,18 @@ class SelectFoodViewController: UIViewController {
     }()
     
     // 음식 설명뷰 끝
-    
+
     // 상세 선택 테이블뷰
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.isScrollEnabled = false
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorStyle = .none
-        tableView.register(SelectionCell.self, forCellReuseIdentifier: SelectionCell.identifier)
+        let selectionNib = UINib(nibName: "SelectionCell", bundle: nil)
+        tableView.register(selectionNib, forCellReuseIdentifier: "SelectionCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-    
     
     // 장바구니에 담기 하단바
     private let addCartBar: UIView = {
@@ -212,53 +209,31 @@ class SelectFoodViewController: UIViewController {
     
     private var currentPrice: Int = 14000   // 현재 금액
     let formatter = NumberFormatter()   // 14000 -> 14,000 으로 만들어 줄 포매터
-    var selections: [SelectionItemName] = []
+    
+    var selections: [Selection] = []
     var selectionItems1: [SelectionItem] = []
     var selectionItems2: [SelectionItem] = []
     var selectionItems3: [SelectionItem] = []
     var selectionItems4: [SelectionItem] = []
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
-        addSubviews()
-        setLayout()
+        view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
-        addSelectionItemData()
-        tableView.reloadData()
+
+        configureUI()   // 네비게이션바 설정
+        addSubviews()   // view에 추가
+        setLayout()     // 레이아웃 설정
+        setData()
         
+        // 현재 담은 메뉴의 가격
         let priceString = (convertIntToPriceString(price: currentPrice) ?? "1,4000") + "원 담기"
         addToCartButton.setTitle(priceString, for: .normal)
     }
     
-    // addSubview
-    func addSubviews() {
-        [scrollView, addCartBar].map{
-            view.addSubview($0)
-        }
-        scrollView.addSubview(contentView)
+    func setData() {
         
-        [minimumPriceLabel, addToCartButton].map {
-            hstackView.addArrangedSubview($0)
-        }
-        addCartBar.addSubview(hstackView)
-        
-        
-        [priceLabel, priceValueLabel].map {
-            priceStackView.addArrangedSubview($0)
-        }
-        [foodMenu, menuDescriptionLabel, reviewIcon, reviewButton, priceStackView].map {
-            descriptionView.addSubview($0)
-        }
-        [foodImageView, descriptionView, tableView].map {
-            contentView.addSubview($0)
-        }
-    }
-    func addSelectionItemData() {
-        print(#function)
         selectionItems1.append(contentsOf: [
             SelectionItem(isEssential: true, isChecked: true, selectionMenu: "엽기떡볶이", priceValue: "+0원"),
             SelectionItem(isEssential: true, isChecked: false, selectionMenu: "엽기오뎅", priceValue: "+0원"),
@@ -294,119 +269,13 @@ class SelectFoodViewController: UIViewController {
         ])
         
         selections.append(contentsOf: [
-            SelectionItemName(selectionKind: "메뉴 선택", isEssential: true, selectionItems: selectionItems1),
-            SelectionItemName(selectionKind: "맛 선택", isEssential: true, selectionItems: selectionItems2),
-            SelectionItemName(selectionKind: "토핑 추가 선택1", isEssential: false, selectionItems: selectionItems3),
-            SelectionItemName(selectionKind: "토핑 추가 선택2", isEssential: false, selectionItems: selectionItems4)
+            Selection(selectionKind: "메뉴 선택", isEssential: true, selectionItems: selectionItems1),
+            Selection(selectionKind: "맛 선택", isEssential: true, selectionItems: selectionItems2),
+            Selection(selectionKind: "토핑 추가 선택1", isEssential: false, selectionItems: selectionItems3),
+            Selection(selectionKind: "토핑 추가 선택2", isEssential: false, selectionItems: selectionItems4)
         ])
-        
-        tableView.reloadData()
     }
     
-    func setLayout() {
-        let safe = view.safeAreaLayoutGuide
-        
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safe.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: addCartBar.topAnchor)
-        ])
-//        scrollView.contentSize = CGSize(width: view.width, height: scrollView.height)
-        
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-        ])
-
-        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
-        contentViewHeight.priority = .defaultLow
-        contentViewHeight.isActive = true
-        
-        // 음식 이미지뷰
-        NSLayoutConstraint.activate([
-            foodImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            foodImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            foodImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            foodImageView.heightAnchor.constraint(equalToConstant: 200),
-            foodImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            descriptionView.topAnchor.constraint(equalTo: foodImageView.bottomAnchor, constant: -4),
-            descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            descriptionView.heightAnchor.constraint(equalToConstant: 210)
-        ])
-        
-        NSLayoutConstraint.activate([
-            foodMenu.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 14),
-            foodMenu.leadingAnchor.constraint(equalTo: descriptionView.leadingAnchor, constant: 14)
-        ])
-        
-        NSLayoutConstraint.activate([
-            menuDescriptionLabel.topAnchor.constraint(equalTo: foodMenu.bottomAnchor, constant: 6),
-            menuDescriptionLabel.leadingAnchor.constraint(equalTo: foodMenu.leadingAnchor, constant: 4),
-            menuDescriptionLabel.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -14),
-        ])
-        
-        NSLayoutConstraint.activate([
-            reviewIcon.topAnchor.constraint(equalTo: menuDescriptionLabel.bottomAnchor, constant: 18),
-            reviewIcon.leadingAnchor.constraint(equalTo: menuDescriptionLabel.leadingAnchor),
-            reviewIcon.widthAnchor.constraint(equalToConstant: 32),
-            reviewIcon.heightAnchor.constraint(equalToConstant: 32)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            reviewButton.topAnchor.constraint(equalTo: reviewIcon.topAnchor, constant: 2),
-            reviewButton.leadingAnchor.constraint(equalTo: reviewIcon.trailingAnchor, constant: 8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            priceStackView.topAnchor.constraint(equalTo: reviewIcon.bottomAnchor, constant: 12),
-            priceStackView.leadingAnchor.constraint(equalTo: reviewIcon.leadingAnchor),
-            priceStackView.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -16)
-        ])
-        
-        // 음식 설명뷰 끝
-        
-        // 테이블뷰 시작
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12),
-            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-
-        
-        // 메뉴 장바구니에 담는 레이아웃
-        NSLayoutConstraint.activate([
-            addCartBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            addCartBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            addCartBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            addCartBar.widthAnchor.constraint(equalToConstant: view.width),
-            addCartBar.heightAnchor.constraint(equalToConstant: view.height / 8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            hstackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            hstackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-            hstackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
-            hstackView.topAnchor.constraint(equalTo: addCartBar.topAnchor, constant: 12)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            addToCartButton.widthAnchor.constraint(equalToConstant: view.width / 1.55)
-        ])
-        
-        
-    }
-
     // MARK: - navigation bar ui 설정
     func configureUI() {
         view.backgroundColor = .white
@@ -434,7 +303,7 @@ class SelectFoodViewController: UIViewController {
         let cartButton = UIBarButtonItem(image: UIImage(named: "장바구니"),
                                          style: .plain,
                                          target: self,
-                                         action: #selector(navigateToCartViewController))
+                                         action: #selector(pushToCart))
         
         
         homeButton.tintColor = .black
@@ -445,7 +314,12 @@ class SelectFoodViewController: UIViewController {
             cartButton, shareButton, homeButton
         ]
     }
-    
+
+    // 장바구니 화면으로 넘어가기
+    @objc func pushToCart() {
+        let cartVC = CartViewController()
+        self.navigationController?.pushViewController(cartVC, animated: true)
+    }
     
     // 14000 -> "14,000" 으로 만들어준다.
     func convertIntToPriceString(price: Int?) -> String? {
@@ -457,31 +331,155 @@ class SelectFoodViewController: UIViewController {
         return formattedString
     }
     
-    @objc func navigateToCartViewController() {
-        let cartVC = CartViewController() // NextViewController는 이동하려는 대상 ViewController입니다.
-        print("click")
-        self.navigationController?.pushViewController(cartVC, animated: true)
+    // MARK: - 레이아웃 설정
+    func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(foodImageView)   // 음식 사진
+        
+        // 음식 설명 부분
+        contentView.addSubview(descriptionView)
+        [priceLabel, priceValueLabel].map {
+            priceStackView.addArrangedSubview($0)
+        }
+        [foodMenu, menuDescriptionLabel, reviewIcon, reviewButton, priceStackView].map {
+            descriptionView.addSubview($0)
+        }
+        // 음식 설명 부분 끝
+  
+        contentView.addSubview(tableView)   // 테이블뷰
+        
+        // 가격 하단바
+        view.addSubview(addCartBar)
+        [minimumPriceLabel, addToCartButton].map {
+            hstackView.addArrangedSubview($0)
+        }
+        addCartBar.addSubview(hstackView)
+        // 가격 하단바 끝
+    }
+    
+    func setLayout() {  // 위치, 크기 설정
+        let safe = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([   // 스크롤뷰
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: addCartBar.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([   // 콘텐트뷰
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+
+        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        contentViewHeight.isActive = true
+        
+        // 음식 이미지뷰
+        NSLayoutConstraint.activate([
+            foodImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            foodImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            foodImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            foodImageView.heightAnchor.constraint(equalToConstant: 200),
+            foodImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor)
+        ])
+        
+        // 음식 설명 부분
+        NSLayoutConstraint.activate([
+            descriptionView.topAnchor.constraint(equalTo: foodImageView.bottomAnchor, constant: -4),
+            descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionView.heightAnchor.constraint(equalToConstant: 225)
+        ])
+        
+        NSLayoutConstraint.activate([
+            foodMenu.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 18),
+            foodMenu.leadingAnchor.constraint(equalTo: descriptionView.leadingAnchor, constant: 14)
+        ])
+        
+        NSLayoutConstraint.activate([
+            menuDescriptionLabel.topAnchor.constraint(equalTo: foodMenu.bottomAnchor, constant: 6),
+            menuDescriptionLabel.leadingAnchor.constraint(equalTo: foodMenu.leadingAnchor, constant: 4),
+            menuDescriptionLabel.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -14)
+        ])
+        
+        NSLayoutConstraint.activate([
+            reviewIcon.topAnchor.constraint(equalTo: menuDescriptionLabel.bottomAnchor, constant: 18),
+            reviewIcon.leadingAnchor.constraint(equalTo: foodMenu.leadingAnchor),
+            reviewIcon.widthAnchor.constraint(equalToConstant: 32),
+            reviewIcon.heightAnchor.constraint(equalToConstant: 32)
+        ])
+        
+        NSLayoutConstraint.activate([
+            reviewButton.topAnchor.constraint(equalTo: reviewIcon.topAnchor, constant: 2),
+            reviewButton.leadingAnchor.constraint(equalTo: reviewIcon.trailingAnchor, constant: 8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            priceStackView.topAnchor.constraint(equalTo: reviewIcon.bottomAnchor, constant: 12),
+            priceStackView.leadingAnchor.constraint(equalTo: menuDescriptionLabel.leadingAnchor),
+            priceStackView.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -18)
+        ])
+        
+        // 음식 설명뷰 끝
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+        ])
+        
+        
+        // 가격 하단바
+        NSLayoutConstraint.activate([
+            addCartBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            addCartBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            addCartBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            addCartBar.heightAnchor.constraint(equalToConstant: view.height / 8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            hstackView.leadingAnchor.constraint(equalTo: addCartBar.leadingAnchor, constant: 12),
+            hstackView.trailingAnchor.constraint(equalTo: addCartBar.trailingAnchor, constant: -12),
+            hstackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
+            hstackView.topAnchor.constraint(equalTo: addCartBar.topAnchor, constant: 12)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            addToCartButton.widthAnchor.constraint(equalToConstant: view.width / 1.55)
+        ])
     }
 }
 
-// MARK: - tableview 설정
-extension SelectFoodViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        selections.count
-    }
 
+extension SelectMenuViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        selections.count+1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionCell.identifier, for: indexPath) as! SelectionCell
-        cell.selectionStyle = .none
-        cell.setData(item: selections[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as? SelectionCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionNameLabel.text = selections[indexPath.row].selectionKind
+        cell.selectConditionLabel.text = selections[indexPath.row].isEssentialString
+        cell.selection = selections[indexPath.row]
         
         return cell
     }
-
-}
-
-extension SelectFoodViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return CGFloat(72 + (50 * (selections[indexPath.row].selectionItems?.count ?? 0)))
+//        return 1000
     }
 }
+

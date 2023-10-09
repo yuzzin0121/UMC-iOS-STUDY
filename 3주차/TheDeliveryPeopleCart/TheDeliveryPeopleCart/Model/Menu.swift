@@ -13,4 +13,6 @@ struct Menu {
     var tastyName: String   // 맛 선택: 덜매운맛
     
     var totalPrice: String  // 22,000원
+    
+    
 }

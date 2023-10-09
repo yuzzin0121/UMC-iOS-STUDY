@@ -9,12 +9,12 @@ import UIKit
 
 class SelectionCell: UITableViewCell {
     static let identifier="SelectionCell"
-    private let contentsView: UIView = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    private let contentsView: UIView = {
+//        let view = UIView()
+//
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     private let selectionNameLabel: UILabel = {
         let label = UILabel()
@@ -26,13 +26,13 @@ class SelectionCell: UITableViewCell {
     }()
     
     private let selectConditionLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 38, height: 22))
+        let label = UILabel()
         label.text = "필수"
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 13)
         label.backgroundColor = .buttonLiteBlue
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 6
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -49,7 +49,7 @@ class SelectionCell: UITableViewCell {
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .buttonLiteBlue
-        tableView.isScrollEnabled = false
+//        tableView.isScrollEnabled = false
         tableView.register(SelectionItemCell.self, forCellReuseIdentifier: SelectionItemCell.identifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,26 +83,26 @@ class SelectionCell: UITableViewCell {
         backgroundColor = .white
         self.tableView.dataSource = self
 //        self.tableView.delegate = self
-        addSubview(contentsView)
+//        addSubview(contentsView)
         [selectionNameLabel, selectConditionLabel].map {
             stackView.addArrangedSubview($0)
         }
         
-        contentsView.addSubview(stackView)
-        contentsView.addSubview(tableView)
-        contentsView.addSubview(separatorView)
+        addSubview(stackView)
+        addSubview(tableView)
+        addSubview(separatorView)
+        
+//        NSLayoutConstraint.activate([
+//            contentsView.topAnchor.constraint(equalTo: topAnchor),
+//            contentsView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            contentsView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            contentsView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
         
         NSLayoutConstraint.activate([
-            contentsView.topAnchor.constraint(equalTo: topAnchor),
-            contentsView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentsView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentsView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 18),
-            stackView.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor, constant: 18),
-            stackView.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor, constant: -18)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 18),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18)
         ])
         
         stackView.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -115,28 +115,24 @@ class SelectionCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12),
-            tableView.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: CGFloat((selection?.selectionItems.count ?? 1) * 54))
+            tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         ])
-        
-        
         
         NSLayoutConstraint.activate([
             separatorView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
-            separatorView.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 12) // 원하는 두께로 설정
         ])
-        tableView.reloadData()
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.setData(item: nil)
-
-    }
+//
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        self.setData(item: nil)
+//
+//    }
     
     func setData(item: SelectionItemName?) {
         guard let item = item else {
@@ -155,17 +151,8 @@ class SelectionCell: UITableViewCell {
             selectConditionLabel.backgroundColor = .buttonGray
             selectConditionLabel.textColor = .buttonTextGray
         }
-        
-       
-        print(item.selectionItems.count)
-        
-//        var totalHeight: CGFloat = 0
-//        for section in 0..<tableView.numberOfSections {
-//            totalHeight += CGFloat(tableView.numberOfRows(inSection: section)) * 60
-//        }
-//        tableView.heightAnchor.constraint(equalToConstant: totalHeight).isActive = true
-//        tableView.estimatedRowHeight = CGFloat(item.selectionItems.count * 54)
-//        tableView.heightAnchor.constraint(equalToConstant: CGFloat(item.selectionItems.count * 50)).isActive = true
+
+//        print(item.selectionItems.count)
         tableView.reloadData()
     }
     
@@ -174,6 +161,7 @@ class SelectionCell: UITableViewCell {
 extension SelectionCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let selectionItems = selection?.selectionItems else {
+            print("없음")
             return 0
         }
         return selectionItems.count 
@@ -183,9 +171,10 @@ extension SelectionCell: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SelectionItemCell.identifier, for: indexPath) as? SelectionItemCell else {
             return UITableViewCell()
         }
-        print(indexPath.row)
+        
         
         cell.setData(item: self.selection?.selectionItems[indexPath.row])
+        print(self.selection?.selectionItems[indexPath.row].priceValue)
         
         return cell
     }
@@ -194,6 +183,6 @@ extension SelectionCell: UITableViewDataSource {
 
 extension SelectionCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 40
     }
 }
