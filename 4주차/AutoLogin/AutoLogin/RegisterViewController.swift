@@ -134,15 +134,15 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        guard let udId = UD.object(forKey: "id") as? String else {
-            print("아이디 존재X")
-            return
-        }
+        let udId = UD.object(forKey: "id") as? String
+//            print("아이디 존재X")
+//            return
+//        }
                 
-        guard let udPasswd = UD.object(forKey: "password") as? String else {
-            print("비밀번호 존재X")
-            return
-        }
+        let udPasswd = UD.object(forKey: "password") as? String
+//            print("비밀번호 존재X")
+//            return
+//        }
         
         // UD에 있는 아이디로 회원가입 하려는 경우 -> 이미 존재하는 ID
         if(id == udId ) {    // 같은 경우
@@ -153,7 +153,7 @@ class RegisterViewController: UIViewController {
         UD.set(id, forKey: "id")
         UD.set(password, forKey: "password")
         UD.synchronize()
-        print("저장 완료")
+        print("저장 완료: \(id), \(password)")
         self.navigationController?.popViewController(animated: true)
     }
     

@@ -156,6 +156,7 @@ class LoginViewController: UIViewController {
         
         guard let udId = UD.object(forKey: "id") as? String else {
             print("아이디 존재X")
+            messageLabel.text = "존재하지 않는 ID입니다."
             return
         }
                 
