@@ -21,24 +21,12 @@ class SelectionItemCell: UITableViewCell {
     private let selectionMenuLabel: UILabel = {
         let label = UILabel()
         label.text = "엽기떡볶이"
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 18)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-//
-//    private let checkStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .horizontal
-//        stackView.alignment = .fill
-//        stackView.distribution = .equalSpacing
-//        stackView.spacing = 12
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        return stackView
-//    }()
-//
-    
-    
+
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.text = "+0원"
@@ -48,16 +36,6 @@ class SelectionItemCell: UITableViewCell {
         return label
     }()
     
-//    private let totalStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.backgroundColor = .white
-//        stackView.alignment = .fill
-//        stackView.distribution = .equalSpacing
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        return stackView
-//    }()
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -66,43 +44,22 @@ class SelectionItemCell: UITableViewCell {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
-        
-        
     }
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        addSubview(totalStackView)
-//
-//        totalStackView.addSubview(checkStackView)
-//        [checkImage, selectionMenuLabel].map {
-//            checkStackView.addArrangedSubview($0)
-//        }
-//        addSubview(totalStackView)
-//        [checkStackView, priceLabel].map {
-//            totalStackView.addArrangedSubview($0)
-//        }
-//
-//
-//        NSLayoutConstraint.activate([
-//            totalStackView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-//            totalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
-//            totalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18),
-//            totalStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
-//        ])
-        heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+
         addSubview(checkImage)
         addSubview(selectionMenuLabel)
         addSubview(priceLabel)
         
         NSLayoutConstraint.activate([
-            checkImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            checkImage.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            checkImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             checkImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            checkImage.widthAnchor.constraint(equalToConstant: 22),
-            checkImage.heightAnchor.constraint(equalToConstant: 22)
+            checkImage.widthAnchor.constraint(equalToConstant: 26),
+            checkImage.heightAnchor.constraint(equalToConstant: 26)
         ])
         
         NSLayoutConstraint.activate([

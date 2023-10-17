@@ -22,12 +22,14 @@ struct SelectionItem {
     }
     var selectionMenu: String   // 선택할 메뉴 이름
     var priceValue: String  // 메뉴 가격값
-    
-    init(isEssential: Bool, isChecked: Bool, selectionMenu: String, priceValue: String) {
-        self.isEssential = isEssential
-        self.isChecked = isChecked
-        self.selectionMenu = selectionMenu
-        self.priceValue = priceValue
+    mutating func checkItem() {
+        self.isChecked = !self.isChecked
     }
+//    init(isEssential: Bool, isChecked: Bool, selectionMenu: String, priceValue: String) {
+//        self.isEssential = isEssential
+//        self.isChecked = isChecked
+//        self.selectionMenu = selectionMenu
+//        self.priceValue = priceValue
+//    }
 }
 

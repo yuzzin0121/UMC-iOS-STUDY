@@ -150,6 +150,8 @@ class SelectFoodViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorStyle = .none
         tableView.register(SelectionCell.self, forCellReuseIdentifier: SelectionCell.identifier)
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 300
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -258,7 +260,7 @@ class SelectFoodViewController: UIViewController {
         }
     }
     func addSelectionItemData() {
-        print(#function)
+
         selectionItems1.append(contentsOf: [
             SelectionItem(isEssential: true, isChecked: true, selectionMenu: "엽기떡볶이", priceValue: "+0원"),
             SelectionItem(isEssential: true, isChecked: false, selectionMenu: "엽기오뎅", priceValue: "+0원"),
@@ -268,7 +270,7 @@ class SelectFoodViewController: UIViewController {
         selectionItems2.append(contentsOf: [
             SelectionItem(isEssential: true, isChecked: true, selectionMenu: "착한맛", priceValue: "+0원"),
             SelectionItem(isEssential: true, isChecked: false, selectionMenu: "초보맛", priceValue: "+0원"),
-            SelectionItem(isEssential: true, isChecked: false, selectionMenu: "뎔매운맛", priceValue: "+0원"),
+            SelectionItem(isEssential: true, isChecked: false, selectionMenu: "덜매운맛", priceValue: "+0원"),
             SelectionItem(isEssential: true, isChecked: false, selectionMenu: "오리지널", priceValue: "+0원"),
             SelectionItem(isEssential: true, isChecked: false, selectionMenu: "매운맛", priceValue: "+0원")
         ])
@@ -307,10 +309,10 @@ class SelectFoodViewController: UIViewController {
         let safe = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safe.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: addCartBar.topAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: safe.bottomAnchor)
         ])
 //        scrollView.contentSize = CGSize(width: view.width, height: scrollView.height)
         
@@ -322,7 +324,7 @@ class SelectFoodViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
 
-        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        let contentViewHeight = contentView.heightAnchor.constraint(equalTo: view.heightAnchor)
         contentViewHeight.priority = .defaultLow
         contentViewHeight.isActive = true
         
@@ -469,6 +471,7 @@ extension SelectFoodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         selections.count
     }
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionCell.identifier, for: indexPath) as! SelectionCell
@@ -482,6 +485,7 @@ extension SelectFoodViewController: UITableViewDataSource {
 
 extension SelectFoodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        print(CGFloat(80 + (52 * (selections[indexPath.row].selectionItems?.count ?? 0))))
+        return CGFloat(48 + (54 * (selections[indexPath.row].selectionItems?.count ?? 0)))
     }
 }

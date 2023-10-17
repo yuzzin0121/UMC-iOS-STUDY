@@ -21,6 +21,7 @@ class SelectionCell: UITableViewCell {
         
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        itemTableView.isScrollEnabled = false
         
         let itemNib = UINib(nibName: "SelectionItemCell", bundle: nil)
         itemTableView.register(itemNib, forCellReuseIdentifier: "SelectionItemCell")
@@ -50,7 +51,7 @@ extension SelectionCell: UITableViewDataSource, UITableViewDelegate {
         guard let cell = itemTableView.dequeueReusableCell(withIdentifier: "SelectionItemCell", for: indexPath) as? SelectionItemCell else {
             return UITableViewCell()
         }
-        
+        print(selection?.selectionItems?[indexPath.row].selectionMenu)
         cell.checkImage.image = selection?.selectionItems?[indexPath.row].checkImage
         cell.selectionMenuLabel.text = selection?.selectionItems?[indexPath.row].selectionMenu
         cell.addPriceLabel.text = selection?.selectionItems?[indexPath.row].priceValue
@@ -58,8 +59,16 @@ extension SelectionCell: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = itemTableView.dequeueReusableCell(withIdentifier: "SelectionItemCell", for: indexPath) as? SelectionItemCell else {
+            return
+        }
+        selection?.selectionItems?[indexPath.row].checkItem()
+        cell.checkImage.image = selection?.selectionItems?[indexPath.row].checkImage
     }
     
 }

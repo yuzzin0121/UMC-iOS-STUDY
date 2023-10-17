@@ -21,12 +21,12 @@ class CartViewController: UIViewController {
         return control
       }()
     
-    let underline: UIView = {
-        let underline = UIView()
-        underline.backgroundColor = .borderGray
-        underline.translatesAutoresizingMaskIntoConstraints = false
-        return underline
-    }()
+//    let underline: UIView = {
+//        let underline = UIView()
+//        underline.backgroundColor = .borderGray
+//        underline.translatesAutoresizingMaskIntoConstraints = false
+//        return underline
+//    }()
     
     
     private let scrollView: UIScrollView = {
@@ -45,8 +45,10 @@ class CartViewController: UIViewController {
     
     private let infoHeaderView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-        view.layer.addBorder([.bottom], color: UIColor.borderGray, width: 2.0)
+        view.backgroundColor = .buttonGray
+//        view.layer.addBorder([.bottom], color: UIColor.borderGray, width: 2.0)
+        view.layer.borderColor = UIColor.borderGray.cgColor
+        view.layer.borderWidth = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -54,8 +56,8 @@ class CartViewController: UIViewController {
     private let infoStackView: UIStackView = {
         let stackView = UIStackView()
         
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.distribution = .equalCentering
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -189,7 +191,7 @@ class CartViewController: UIViewController {
     func addSubviews(){
         view.addSubview(scrollView)
         view.addSubview(segmentedControl)
-        view.addSubview(underline)
+//        view.addSubview(underline)
         scrollView.addSubview(contentView)
         contentView.addSubview(infoHeaderView)
         view.addSubview(bottomOrderView)
@@ -221,16 +223,16 @@ class CartViewController: UIViewController {
             segmentedControl.heightAnchor.constraint(equalToConstant: 40)
         ])
         
-        NSLayoutConstraint.activate([
-            underline.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 1),
-            underline.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            underline.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            underline.heightAnchor.constraint(equalToConstant: 1)
-        ])
+//        NSLayoutConstraint.activate([
+//            underline.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 1),
+//            underline.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            underline.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            underline.heightAnchor.constraint(equalToConstant: 1)
+//        ])
         
         // 스크롤뷰
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: underline.bottomAnchor, constant: 1),
+            scrollView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 1),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

@@ -9,17 +9,11 @@ import UIKit
 
 class SelectionCell: UITableViewCell {
     static let identifier="SelectionCell"
-//    private let contentsView: UIView = {
-//        let view = UIView()
-//
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
     
     private let selectionNameLabel: UILabel = {
         let label = UILabel()
         label.text = "선택"
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -48,21 +42,24 @@ class SelectionCell: UITableViewCell {
     // 테이블뷰
     private var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .buttonLiteBlue
-//        tableView.isScrollEnabled = false
+//        tableView.backgroundColor = .buttonLiteBlue
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
+//        tableView.separatorInset = .init(top: 14, left: 0, bottom: 14, right: 0)
         tableView.register(SelectionItemCell.self, forCellReuseIdentifier: SelectionItemCell.identifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+     
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
-    // 구분선
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .buttonGray  // 원하는 색상으로 설정
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    // 구분선
+//    let separatorView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .buttonGray  // 원하는 색상으로 설정
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     var selection: SelectionItemName?
 
@@ -82,27 +79,21 @@ class SelectionCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .white
         self.tableView.dataSource = self
-//        self.tableView.delegate = self
-//        addSubview(contentsView)
+        self.tableView.delegate = self
+
         [selectionNameLabel, selectConditionLabel].map {
             stackView.addArrangedSubview($0)
         }
         
         addSubview(stackView)
         addSubview(tableView)
-        addSubview(separatorView)
-        
-//        NSLayoutConstraint.activate([
-//            contentsView.topAnchor.constraint(equalTo: topAnchor),
-//            contentsView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            contentsView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            contentsView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
+//        addSubview(separatorView)
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 18),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18),
+            stackView.heightAnchor.constraint(equalToConstant: 26)
         ])
         
         stackView.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -116,23 +107,24 @@ class SelectionCell: UITableViewCell {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12),
             tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+            tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
         ])
         
-        NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 12) // 원하는 두께로 설정
-        ])
+//        NSLayoutConstraint.activate([
+//            separatorView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 12),
+//            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+//            separatorView.heightAnchor.constraint(equalToConstant: 12) // 원하는 두께로 설정
+//        ])
     }
-//
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.setData(item: nil)
-//
-//    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.setData(item: nil)
+        tableView.reloadData()
+    }
     
     func setData(item: SelectionItemName?) {
         guard let item = item else {
@@ -151,14 +143,15 @@ class SelectionCell: UITableViewCell {
             selectConditionLabel.backgroundColor = .buttonGray
             selectConditionLabel.textColor = .buttonTextGray
         }
-
-//        print(item.selectionItems.count)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = CGFloat(52 * item.selectionItems.count)
         tableView.reloadData()
+        
     }
     
 }
 
-extension SelectionCell: UITableViewDataSource {
+extension SelectionCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let selectionItems = selection?.selectionItems else {
             print("없음")
@@ -174,15 +167,13 @@ extension SelectionCell: UITableViewDataSource {
         
         
         cell.setData(item: self.selection?.selectionItems[indexPath.row])
-        print(self.selection?.selectionItems[indexPath.row].priceValue)
+        print(self.selection?.selectionItems[indexPath.row].priceValue ?? "+0원")
         
         return cell
     }
-    
-}
 
-extension SelectionCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return UITableView.automaticDimension
     }
 }
+

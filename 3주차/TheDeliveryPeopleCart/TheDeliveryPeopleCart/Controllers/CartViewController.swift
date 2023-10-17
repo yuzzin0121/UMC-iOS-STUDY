@@ -39,15 +39,17 @@ class CartViewController: UIViewController {
     
     private let infoHeaderView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
-        
+        view.backgroundColor = .white
+        view.layer.addBorder([.bottom], color: .borderGray, width: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let infoStackView: UIStackView = {
         let stackView = UIStackView()
-        
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -58,7 +60,7 @@ class CartViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         let attributedString = NSMutableAttributedString(string: "")
-        let fontSize = UIFont.boldSystemFont(ofSize: 18)
+        let fontSize = UIFont.boldSystemFont(ofSize: 17)
         
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "엽떡아이콘")
@@ -146,7 +148,7 @@ class CartViewController: UIViewController {
     private let orderMessage: UILabel = {
         let label = UILabel()
         label.text = "배달 주문하기"
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -179,18 +181,22 @@ class CartViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(segmentedControl)
         scrollView.addSubview(contentView)
+    
         contentView.addSubview(infoHeaderView)
-        view.addSubview(bottomOrderView)
-        bottomOrderView.addSubview(orderStackView)
-        
-        [countLabel, orderMessage, totalPriceLabel].map {
-            orderStackView.addArrangedSubview($0)
-        }
-        
         infoHeaderView.addSubview(infoStackView)
         [storeLabel, timeLabel].map {
             infoStackView.addArrangedSubview($0)
         }
+        
+        
+        
+        view.addSubview(bottomOrderView)
+        bottomOrderView.addSubview(orderStackView)
+    
+        [countLabel, orderMessage, totalPriceLabel].map {
+            orderStackView.addArrangedSubview($0)
+        }
+
     }
     
     func setLayout() {
@@ -232,16 +238,16 @@ class CartViewController: UIViewController {
             infoHeaderView.topAnchor.constraint(equalTo: contentView.topAnchor),
             infoHeaderView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             infoHeaderView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            infoHeaderView.heightAnchor.constraint(equalToConstant: 100)
+            infoHeaderView.heightAnchor.constraint(equalToConstant: 60)
         ])
         
         NSLayoutConstraint.activate([
-            infoStackView.centerYAnchor.constraint(equalTo: infoHeaderView.centerYAnchor),
-            infoStackView.centerXAnchor.constraint(equalTo: infoHeaderView.centerXAnchor),
-            infoStackView.widthAnchor.constraint(equalToConstant: infoHeaderView.width - 12),
-            infoStackView.heightAnchor.constraint(equalToConstant: 40)
+            infoStackView.topAnchor.constraint(equalTo: infoHeaderView.topAnchor, constant: 12),
+            infoStackView.leadingAnchor.constraint(equalTo: infoHeaderView.leadingAnchor, constant: 14),
+            infoStackView.trailingAnchor.constraint(equalTo: infoHeaderView.trailingAnchor, constant: -14),
+            infoStackView.bottomAnchor.constraint(equalTo: infoHeaderView.bottomAnchor, constant: -12)
+           
         ])
-        
         
         // 하단바
         NSLayoutConstraint.activate([

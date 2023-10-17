@@ -149,6 +149,8 @@ class SelectMenuViewController: UIViewController {
         tableView.separatorStyle = .none
         let selectionNib = UINib(nibName: "SelectionCell", bundle: nil)
         tableView.register(selectionNib, forCellReuseIdentifier: "SelectionCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 69
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -436,7 +438,6 @@ class SelectMenuViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
         
-        
         // 가격 하단바
         NSLayoutConstraint.activate([
             addCartBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -462,14 +463,16 @@ class SelectMenuViewController: UIViewController {
 
 extension SelectMenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        selections.count+1
+        selections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as? SelectionCell else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
         
+        print(selections[indexPath.row].selectionKind)
         cell.selectionNameLabel.text = selections[indexPath.row].selectionKind
         cell.selectConditionLabel.text = selections[indexPath.row].isEssentialString
         cell.selection = selections[indexPath.row]
@@ -477,9 +480,9 @@ extension SelectMenuViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(72 + (50 * (selections[indexPath.row].selectionItems?.count ?? 0)))
-//        return 1000
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return CGFloat(69 + (50 * (selections[indexPath.row].selectionItems?.count ?? 0)))
+////        return 1000
+//    }
 }
 
