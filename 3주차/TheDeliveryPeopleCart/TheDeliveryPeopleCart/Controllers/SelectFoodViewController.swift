@@ -476,6 +476,7 @@ extension SelectFoodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionCell.identifier, for: indexPath) as! SelectionCell
         cell.selectionStyle = .none
+        cell.separatorInset = UIEdgeInsets.zero
         cell.setData(item: selections[indexPath.row])
         
         return cell

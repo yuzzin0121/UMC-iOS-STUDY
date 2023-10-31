@@ -165,7 +165,7 @@ extension SelectionCell: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        
+        cell.separatorInset = UIEdgeInsets.zero
         cell.setData(item: self.selection?.selectionItems[indexPath.row])
         print(self.selection?.selectionItems[indexPath.row].priceValue ?? "+0원")
         
