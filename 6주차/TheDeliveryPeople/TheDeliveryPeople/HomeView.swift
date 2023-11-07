@@ -267,6 +267,8 @@ private struct TabBarView: View {
         .shadow(color: Color.gray ,radius: 6)
         .ignoresSafeArea(edges: .vertical)
         .background(.white)
+    
+        
 
     }
 }
@@ -291,7 +293,7 @@ private struct TabCellView: View {
             }
             
         })
-        .frame(width: 64)
+        .frame(width: 52)
     }
 }
 
