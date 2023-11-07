@@ -12,7 +12,6 @@ class MiseAPI {
     static let shared = MiseAPI()
     let apiKey: String = "MQrVo83BfzepcyVuUlKNaG571858FLI1mA1dL%2BTSqKOaFlPBclqkCUqXjL4y7iixgRx7BFUi4BhxcT2UnN2Wbg%3D%3D"
     
-    // 알림받기 토글 on/off 했을 때 호출
     func getMise(sidoName: String) {
         
         let decoder = JSONDecoder()
@@ -36,7 +35,6 @@ class MiseAPI {
                 
                 if let miseData = try? decoder.decode(MiseResponse.self, from: jsonData){
                     MiseRepo.shared.data = miseData.response.body.items
-                 
                 }
                 NotificationCenter.default.post(name: Notification.Name("receiveNotification"), object: nil)
             

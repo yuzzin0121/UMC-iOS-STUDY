@@ -26,22 +26,13 @@ struct Body: Codable {
 }
 
 struct AirQualityItem: Codable {
-    let so2Grade: String?
-    let khaiValue: String?
     let so2Value: String?
     let coValue: String?
-    let o3Grade: String?
     let pm10Value: String?
-    let khaiGrade: String?
     let pm25Value: String?
-    let sidoName: String?
-    let no2Grade: String?
-    let pm25Grade: String?
-    let dataTime: String?
-    let coGrade: String?
+//    let sidoName: String?
     let no2Value: String?
     let stationName: String?
-    let pm10Grade: String?
     let o3Value: String?
 }
 
