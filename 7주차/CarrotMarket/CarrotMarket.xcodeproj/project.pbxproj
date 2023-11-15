@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		618718A62AFF643D0011480D /* CarrotMarketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718A52AFF643D0011480D /* CarrotMarketApp.swift */; };
+		618718A82AFF643D0011480D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718A72AFF643D0011480D /* HomeView.swift */; };
+		618718AA2AFF64400011480D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 618718A92AFF64400011480D /* Assets.xcassets */; };
+		618718AD2AFF64400011480D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 618718AC2AFF64400011480D /* Preview Assets.xcassets */; };
+		618718BF2B0213010011480D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718BE2B0213010011480D /* ContentView.swift */; };
+		618718C22B0214070011480D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718C12B0214070011480D /* Post.swift */; };
+		618718C42B0214380011480D /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718C32B0214380011480D /* PostListViewModel.swift */; };
+		618718D42B04526B0011480D /* Post2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718D32B04526B0011480D /* Post2.swift */; };
+		618718D62B0466E90011480D /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718D52B0466E90011480D /* LifeView.swift */; };
+		618718D82B04670F0011480D /* NearMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718D72B04670F0011480D /* NearMeView.swift */; };
+		618718DA2B0467950011480D /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718D92B0467950011480D /* ChattingView.swift */; };
+		618718DC2B0467A70011480D /* MyCarrotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718DB2B0467A70011480D /* MyCarrotView.swift */; };
+		618718DF2B046DD50011480D /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618718DE2B046DD50011480D /* Color+Extensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		618718A22AFF643D0011480D /* CarrotMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarrotMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		618718A52AFF643D0011480D /* CarrotMarketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrotMarketApp.swift; sourceTree = "<group>"; };
+		618718A72AFF643D0011480D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		618718A92AFF64400011480D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		618718AC2AFF64400011480D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		618718BE2B0213010011480D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		618718C12B0214070011480D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		618718C32B0214380011480D /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		618718D32B04526B0011480D /* Post2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post2.swift; sourceTree = "<group>"; };
+		618718D52B0466E90011480D /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
+		618718D72B04670F0011480D /* NearMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeView.swift; sourceTree = "<group>"; };
+		618718D92B0467950011480D /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
+		618718DB2B0467A70011480D /* MyCarrotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarrotView.swift; sourceTree = "<group>"; };
+		618718DE2B046DD50011480D /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6187189F2AFF643D0011480D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		618718992AFF643D0011480D = {
+			isa = PBXGroup;
+			children = (
+				618718A42AFF643D0011480D /* CarrotMarket */,
+				618718A32AFF643D0011480D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		618718A32AFF643D0011480D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				618718A22AFF643D0011480D /* CarrotMarket.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		618718A42AFF643D0011480D /* CarrotMarket */ = {
+			isa = PBXGroup;
+			children = (
+				618718DD2B046DCA0011480D /* Extensions */,
+				618718C02B0213F90011480D /* Model */,
+				618718A52AFF643D0011480D /* CarrotMarketApp.swift */,
+				618718A72AFF643D0011480D /* HomeView.swift */,
+				618718A92AFF64400011480D /* Assets.xcassets */,
+				618718AB2AFF64400011480D /* Preview Content */,
+				618718BE2B0213010011480D /* ContentView.swift */,
+				618718D52B0466E90011480D /* LifeView.swift */,
+				618718D72B04670F0011480D /* NearMeView.swift */,
+				618718D92B0467950011480D /* ChattingView.swift */,
+				618718DB2B0467A70011480D /* MyCarrotView.swift */,
+			);
+			path = CarrotMarket;
+			sourceTree = "<group>";
+		};
+		618718AB2AFF64400011480D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				618718AC2AFF64400011480D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		618718C02B0213F90011480D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				618718C12B0214070011480D /* Post.swift */,
+				618718C32B0214380011480D /* PostListViewModel.swift */,
+				618718D32B04526B0011480D /* Post2.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		618718DD2B046DCA0011480D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				618718DE2B046DD50011480D /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		618718A12AFF643D0011480D /* CarrotMarket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 618718B02AFF64400011480D /* Build configuration list for PBXNativeTarget "CarrotMarket" */;
+			buildPhases = (
+				6187189E2AFF643D0011480D /* Sources */,
+				6187189F2AFF643D0011480D /* Frameworks */,
+				618718A02AFF643D0011480D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarrotMarket;
+			productName = CarrotMarket;
+			productReference = 618718A22AFF643D0011480D /* CarrotMarket.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6187189A2AFF643D0011480D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					618718A12AFF643D0011480D = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 6187189D2AFF643D0011480D /* Build configuration list for PBXProject "CarrotMarket" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 618718992AFF643D0011480D;
+			productRefGroup = 618718A32AFF643D0011480D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				618718A12AFF643D0011480D /* CarrotMarket */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		618718A02AFF643D0011480D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618718AD2AFF64400011480D /* Preview Assets.xcassets in Resources */,
+				618718AA2AFF64400011480D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6187189E2AFF643D0011480D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				618718D42B04526B0011480D /* Post2.swift in Sources */,
+				618718A82AFF643D0011480D /* HomeView.swift in Sources */,
+				618718DA2B0467950011480D /* ChattingView.swift in Sources */,
+				618718A62AFF643D0011480D /* CarrotMarketApp.swift in Sources */,
+				618718C42B0214380011480D /* PostListViewModel.swift in Sources */,
+				618718D62B0466E90011480D /* LifeView.swift in Sources */,
+				618718BF2B0213010011480D /* ContentView.swift in Sources */,
+				618718D82B04670F0011480D /* NearMeView.swift in Sources */,
+				618718C22B0214070011480D /* Post.swift in Sources */,
+				618718DF2B046DD50011480D /* Color+Extensions.swift in Sources */,
+				618718DC2B0467A70011480D /* MyCarrotView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		618718AE2AFF64400011480D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		618718AF2AFF64400011480D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		618718B12AFF64400011480D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CarrotMarket/Preview Content\"";
+				DEVELOPMENT_TEAM = T2Q8P9627P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dev.CarrotMarket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		618718B22AFF64400011480D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CarrotMarket/Preview Content\"";
+				DEVELOPMENT_TEAM = T2Q8P9627P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dev.CarrotMarket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6187189D2AFF643D0011480D /* Build configuration list for PBXProject "CarrotMarket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618718AE2AFF64400011480D /* Debug */,
+				618718AF2AFF64400011480D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		618718B02AFF64400011480D /* Build configuration list for PBXNativeTarget "CarrotMarket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				618718B12AFF64400011480D /* Debug */,
+				618718B22AFF64400011480D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6187189A2AFF643D0011480D /* Project object */;
+}
