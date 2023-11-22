@@ -167,13 +167,14 @@ private struct newProductBtnView : View {
             Spacer()
             HStack {
                 Spacer()
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 40)
                     .fill(.orange)
-                    .frame(width: 100, height: 44)
+                    .frame(width: 80, height: 44)
                     .overlay(Text("+ 글쓰기")
                         .font(.system(size: 16, weight: .bold))
                         .foregroundColor(.white)
                     )
+                    .shadow(radius: 10, y: 5)
                 }
         }
     }
