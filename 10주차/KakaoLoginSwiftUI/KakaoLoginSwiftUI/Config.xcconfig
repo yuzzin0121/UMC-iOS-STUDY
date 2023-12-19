@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  KakaoLoginSwiftUI
+//
+//  Created by 조유진 on 12/20/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_NATIVE_APP_KEY = 88bbdb772493ea388bfb987d268984bc
